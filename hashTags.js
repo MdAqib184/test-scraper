@@ -66,14 +66,14 @@ export async function scrapeTwitterHashtags(credentials, hashtags) {
   }
 }
 
-// Example usage:
-const credentials = {
-  username: 'your_username',
-  password: 'your_password'
-};
+// // Example usage:
+// const credentials = {
+//   username: 'your_username',
+//   password: 'your_password'
+// };
 
-const hashtags = ['#crypto', '#bitcoin'];
+// const hashtags = ['#crypto', '#bitcoin'];
 
-scrapeTwitterHashtags(credentials, hashtags)
-  .then(results => console.log(JSON.stringify(results, null, 2)))
-  .catch(error => console.error('Error:', error));
+// scrapeTwitterHashtags(credentials, hashtags)
+//   .then(results => console.log(JSON.stringify(results, null, 2)))
+//   .catch(error => console.error('Error:', error));
