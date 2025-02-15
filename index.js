@@ -1,6 +1,8 @@
 import cron from "node-cron";
 import { getTwitterData } from "./profileScraper.js";
 import { scrapeTwitterHashtags } from "./hashTags.js";
+import { sendTwitterEmbeds } from "./sendToDiscord.js";
+import { sendHashtagEmbeds } from "./sendHashTag.js";
 
 const credentials = {
   username: "jawed_uwais_21",
@@ -17,9 +19,11 @@ const runScrapers = async () => {
   try {
     const profileData = await getTwitterData(accounts);
     console.log("Profile Data:", JSON.stringify(profileData, null, 2));
+    sendTwitterEmbeds(profileData);
 
-    const hashtagData = await scrapeTwitterHashtags(credentials, hashtags);
-    console.log("Hashtag Data:", JSON.stringify(hashtagData, null, 2));
+    // const hashtagData = await scrapeTwitterHashtags(credentials, hashtags);
+    // console.log("Hashtag Data:", JSON.stringify(hashtagData, null, 2));
+    // sendHashtagEmbeds(hashtagData);
   } catch (error) {
     console.error("Error running scrapers:", error);
   }
@@ -34,4 +38,3 @@ cron.schedule("*/2 * * * *", () => {
 });
 
 console.log("Cron job scheduled to run every 2 minutes");
-
