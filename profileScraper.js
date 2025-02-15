@@ -90,7 +90,7 @@ const getRecentTweets = async (page) => {
   return tweets;
 };
 
-const getTwitterData = async (accounts) => {
+export const getTwitterData = async (accounts) => {
   let browser;
   const results = {};
   
@@ -166,21 +166,21 @@ const getTwitterData = async (accounts) => {
   }
 };
 
-// Example usage
-const run = async () => {
-  try {
-    console.log('Starting scrape...');
-    // You can now pass an array of usernames or URLs
-    const accounts = [
-      'elonmusk',
-      'https://x.com/orangie'
-    ];
+// // Example usage
+// const run = async () => {
+//   try {
+//     console.log('Starting scrape...');
+//     // You can now pass an array of usernames or URLs
+//     const accounts = [
+//       'elonmusk',
+//       'https://x.com/orangie'
+//     ];
     
-    const data = await getTwitterData(accounts);
-    console.log('Results:', JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Failed to run scraper:', error);
-  }
-};
+//     const data = await getTwitterData(accounts);
+//     console.log('Results:', JSON.stringify(data, null, 2));
+//   } catch (error) {
+//     console.error('Failed to run scraper:', error);
+//   }
+// };
 
-run();
+// run();
