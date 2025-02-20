@@ -35,7 +35,7 @@ class TwitterHashtagScraper:
 
         # Initialize the WebDriver using self.options
         self.driver = webdriver.Remote(
-        command_executor='http://172.17.0.2:4444/wd/hub',
+        command_executor='http://localhost:4444/wd/hub',
         options=self.options
         )
         self.wait = WebDriverWait(self.driver, 20)
@@ -176,14 +176,14 @@ def main():
     scraper = TwitterHashtagScraper(HASHTAGS)
 
     # Schedule the job every 5 minutes
-    schedule.every(1).minutes.do(scrape_and_send, scraper=scraper, hashtags=HASHTAGS)
+    schedule.every(5).minutes.do(scrape_and_send, scraper=scraper, hashtags=HASHTAGS)
 
     print("⏳ Scraper running every 5 minutes...")
     
     try:
         while True:
             schedule.run_pending()
-            time.sleep(1)
+            time.sleep(5)
     except KeyboardInterrupt:
         print("\n🛑 Stopping scraper...")
         scraper.close()

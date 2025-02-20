@@ -35,7 +35,7 @@ class TwitterScraper:
         
         # Initialize the WebDriver using self.options
         self.driver = webdriver.Remote(
-        command_executor='http://172.17.0.2:4444/wd/hub',
+        command_executor='http://localhost:5555/wd/hub',
         options=self.options
         )
         self.wait = WebDriverWait(self.driver, 20)
@@ -85,7 +85,7 @@ class TwitterScraper:
         try:
             url = f"https://x.com/{username}"
             self.driver.get(url)
-            time.sleep(1)
+            time.sleep(2)
             
             tweets_data = []
             last_height = self.driver.execute_script("return document.body.scrollHeight")
@@ -242,7 +242,7 @@ def main():
                 else:
                     print(f"⚠️ No tweets found for @{username}")
             
-            print("\n⏳ Waiting 5 minutes...")
+            print("\n⏳ Waiting 2 minutes...")
             time.sleep(300)
 
     except KeyboardInterrupt:
